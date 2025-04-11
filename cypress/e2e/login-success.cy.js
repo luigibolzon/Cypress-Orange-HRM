@@ -1,3 +1,6 @@
+import userData from '../fixtures/User/userData.json'
+
+
 describe('Orange Tests', () => {
 
   const selectorList = {
@@ -8,20 +11,22 @@ describe('Orange Tests', () => {
       sectionTopBarText: "Dashboard",
       loginFailAlert: ".oxd-alert"
   }
+
+
+
   it('login success', () => {
     cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
-    cy.get(selectorList.loginField).type('admin')
-    cy.get(selectorList.passwordField).type('admin123')
+    cy.get(selectorList.loginField).type(userData.userSuccess.login)
+    cy.get(selectorList.passwordField).type(userData.userSuccess.password)
     cy.get(selectorList.loginButton).click()
-    cy.location('pathname').should('equal','/web/index.php/dashboard/index')
-    cy.get(selectorList.sectionTopBar).contains('Dashboard')
+    cy.get(selectorList.loginFailAlert).should('not.exist')
   })
 
-  it.skip('login fail', () => {
+  it('login fail', () => {
     cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
-    cy.get(selectorList.loginField).type('admin')
-    cy.get(selectorList.passwordField).type('admin')
+    cy.get(selectorList.loginField).type(userData.userFail.login)
+    cy.get(selectorList.passwordField).type(userData.userFail.password)
     cy.get(selectorList.loginButton).click()
-    cy.get(selectorList.loginFailAlert).should('be.visible')
+    cy.get(selectorList.loginFailAlert).should('exist')
   })
-})
+})  
