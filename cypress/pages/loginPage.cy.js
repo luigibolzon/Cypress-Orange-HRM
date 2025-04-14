@@ -1,3 +1,30 @@
+class loginPage{
+  Selectors(){
+    const selectorList   = {
+      loginField: ":nth-child(2) > .oxd-input-group > :nth-child(2) > .oxd-input",
+      passwordField: ":nth-child(3) > .oxd-input-group > :nth-child(2) > .oxd-input",
+      loginButton: ".oxd-button",
+      sectionTopBar: ".oxd-topbar-header-breadcrumb > .oxd-text",
+      sectionTopBarText: "Dashboard",
+      loginFailAlert: ".oxd-alert",
+      myInfoButton: ":nth-child(6) > .oxd-main-menu-item",
+      myInfoForm: ".orangehrm-edit-employee-content > :nth-child(1)"
+    }
+    return selectorList
+  }
+  accessLoginPage(){
+    cy.visit('/auth/login')
+  }
+  loginWithUser(username, password){
+    cy.get(this.Selectors.selectorList.loginField).type(username)
+    cy.get(this.Selectors.selectorList.passwordField).type(password)
+    cy.get(this.Selectors.selectorList.loginButton).click() 
+  }
+}
+
+
+
+
 import userData from '../fixtures/User/userData.json'
 
 
@@ -36,3 +63,5 @@ describe('Orange Tests', () => {
     cy.get(selectorList.loginFailAlert).should('exist')
   })
 })  
+
+export default loginPage
