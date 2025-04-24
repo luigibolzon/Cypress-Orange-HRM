@@ -4,10 +4,10 @@ import dashboardPage from '../pages/dashboardPage.cy.js'
 
 const loginPageObject = new loginPage()
 const dashboardPageObject = new dashboardPage()
-describe('Orange Tests', () => {
+describe('Dashboard Tests', () => {
   it.only('Dashboard', () => {
     //login
-    loginPageObject.login(userData.userSuccess.login, userData.userSuccess.password)
+    loginPageObject.loginWithUser(userData.userSuccess.login, userData.userSuccess.password)
     //access dashboard page
     dashboardPageObject.accessDashboardPage()
   })

@@ -9,7 +9,7 @@ class dashboardPage{
     return selectorList
   }
   accessDashboardPage(){
-    cy.visit('/web/index.php/dashboard/index')
+    cy.visit('/dashboard/index')
   }
   clickMyDashboardButton(){
     cy.get(this.Selectors().myDashboardButton).click()

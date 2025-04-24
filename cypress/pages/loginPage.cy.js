@@ -21,7 +21,7 @@ class loginPage{
   Login(username, password){
     this.accessLoginPage()
     this.loginWithUser(username, password)
-    cy.get(loginPageObject.Selectors().loginFailAlert).should('not.exist')
+    cy.get(this.Selectors().loginFailAlert).should('not.exist')
   }
 }
 
