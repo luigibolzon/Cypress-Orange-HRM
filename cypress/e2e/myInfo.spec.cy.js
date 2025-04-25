@@ -10,6 +10,9 @@ describe('My Info Tests', () => {
     loginPageObject.Login(userData.userSuccess.login, userData.userSuccess.password)
     //access myInfo page
     myInfoPageObject.accessMyInfoPage()
-    myInfoPageObject.FillMyInfoForm("giovanni", "mario", "rossi", "batata", "123456", "123456", "123456", "2024-12-31")
+    myInfoPageObject.fillMyInfoFormPersonal("giovanni", "mario", "rossi")
+    myInfoPageObject.fillMyInfoFormProfessional("123456", "123456", "123456", "2024-12-31")
+    myInfoPageObject.fillMyInfoFormStatus()
+    myInfoPageObject.fillMyInfoCustomFields()
   })
 })  
